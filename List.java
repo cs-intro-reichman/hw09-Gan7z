@@ -51,7 +51,7 @@ public class List {
         int index = 0;
 
         while (temp != null){
-            if (temp.cp.chr == chr){
+            if (temp.cp.equals(chr)){
                 return index;
             }
             temp = temp.next;
@@ -93,7 +93,7 @@ public class List {
      *  If the index is negative or is greater than the size of this list, 
      *  throws an IndexOutOfBoundsException. */
     public CharData get(int index) {
-        if (index > size || index < 0) throw new IndexOutOfBoundsException();
+        if (index >= size || index < 0) throw new IndexOutOfBoundsException();
         Node temp = this.first;
         for (int i = 0; i<index;i++) temp = temp.next;
         return temp.cp;
