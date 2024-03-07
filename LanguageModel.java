@@ -1,4 +1,3 @@
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Random;
 
@@ -101,7 +100,7 @@ public class LanguageModel {
 	 * Generates a random text, based on the probabilities that were learned during training. 
 	 * @param initialText - text to start with. If initialText's last substring of size numberOfLetters
 	 * doesn't appear as a key in Map, we generate no text and return only the initial text. 
-	 * @param numberOfLetters - the size of text to generate
+	 * @param textLength - the size of text to generate
 	 * @return the generated text
 	 */
 	public String generate(String initialText, int textLength) {
@@ -113,7 +112,8 @@ public class LanguageModel {
         
         /* The text generation process stops when the length of the generated text equals the desired   
            text length, as specified by the user. */
-        while (generatedText.length() != textLength){
+           int numberOfLetters = textLength + windowLength;
+           while ((generatedText.length() < numberOfLetters)) {
             List flag = CharDataMap.get(window);
             /*  In any iteration, if the current window is not found in the map, we stop the process and
                 return the text that was generated so far. */
